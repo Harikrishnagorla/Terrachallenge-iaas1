@@ -19,6 +19,7 @@ resource "azurerm_linux_virtual_machine" "LinuxVM" {
   location            = var.location
   size                = "Standard_F2"
   admin_username      = "adminuser"
+<<<<<<< HEAD
   network_interface_ids = [azurerm_network_interface.linuxinterface.id,
   ]
 
@@ -27,6 +28,13 @@ resource "azurerm_linux_virtual_machine" "LinuxVM" {
     public_key = file("~/.ssh/id_rsa.pub")
   }
 
+=======
+  admin_password      = module.azurerm_key_vault_secret.linux-sec
+  disable_password_authentication = false
+  network_interface_ids = [azurerm_network_interface.linuxinterface.id,
+  ]
+
+>>>>>>> 7f7a43d (checkpoint3)
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"

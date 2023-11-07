@@ -13,10 +13,13 @@ provider "azurerm" {
     }
   
 }
+<<<<<<< HEAD
 resource "azurerm_resource_group" "terrachallenge" {
   name     = "terrachallenge"
   location = "East US"
 }
+=======
+>>>>>>> 7f7a43d (checkpoint3)
 
 resource "azurerm_virtual_network" "Terrachallenge-vnet" {
   name                = "Terrachallenge-vnet"
@@ -64,3 +67,14 @@ resource "azurerm_public_ip" "pip-test" {
   depends_on = [ azurerm_virtual_network.Terrachallenge-vnet ]
 }
 
+<<<<<<< HEAD
+=======
+module "resource_group_name" {
+  source = "./Resourcegroup"
+}
+
+module "keyvault" {
+  source = "./keyvault"
+  
+}
+>>>>>>> 7f7a43d (checkpoint3)
