@@ -4,6 +4,10 @@ terraform {
       source = "hashicorp/azurerm"
       version = "3.75.0"
     }
+    random = {
+      source = "hashicorp/random"
+      version = "3.5.1"
+    }
   }
   
 }
@@ -13,11 +17,12 @@ provider "azurerm" {
     }
   
 }
-resource "azurerm_resource_group" "terrachallenge" {
-  name     = "terrachallenge"
-  location = "East US"
+module "resource_group_name" {
+  source = "./Resourcegroup"
 }
-
+module "keyvault" {
+  source = "./keyvault"
+}
 resource "azurerm_virtual_network" "Terrachallenge-vnet" {
   name                = "Terrachallenge-vnet"
   location            = var.location

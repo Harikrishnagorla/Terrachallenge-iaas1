@@ -17,7 +17,7 @@ resource "azurerm_windows_virtual_machine" "Tfwindowsvm" {
   location            = var.location
   size                = "Standard_B1ms"
   admin_username      = "adminuser"
-  admin_password      = "Test12345678"
+  admin_password      = module.azurerm_key_vault_secret.Windows-sec.value
   network_interface_ids = [
     azurerm_network_interface.Win-nic.id,
   ]
